@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Form</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-image {
+            width: min(30vw, 200px);
+            height: auto;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            width: min(95vw, 800px);
+            margin: 2vh 0 2vh 0;
+            padding: min(30vh, 20px) min(3vw, 30px) min(1vh, 30px) min(3vw, 30px);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #6200ea;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="text-align: center;">
+            <img src="./stonks-logo.png" alt="Logo" class="header-image">
+        </div>
+        <h2>Register</h2>
+        <form action="/process-form-data" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Your password">
+
+            <label for="options">Options</label>
+            <select id="options" name="options">
+                <option value="default">Default</option>
+                <option value="a">A</option>
+                <option value="b">B</option>
+            </select>
+
+            <label for="additional-info">Additional info</label>
+            <textarea id="additional-info" name="additionalInfo" rows="4" placeholder="Lorem ipsum"></textarea>
+
+            <label>
+                <input type="checkbox" name="checkbox">
+                Checkbox
+            </label>
+
+            <label>
+                <input type="radio" name="radio" value="x" checked>
+                X
+            </label>
+            <label>
+                <input type="radio" name="radio" value="y">
+                Y
+            </label>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        window.Telegram.WebApp.ready();
+        window.Telegram.WebApp.enableClosingConfirmation();
+        // window.Telegram.WebApp.expand();
+    </script>
+</body>
+
+</html>
