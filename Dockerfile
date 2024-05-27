@@ -4,7 +4,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 WORKDIR /home/nobody/app
 
-COPY --chown=nobody:nobody package*.json tsconfig.json .
+COPY --chown=nobody:nobody package*.json tsconfig.json ./
 COPY --chown=nobody:nobody src src
 
 RUN npm install-clean
@@ -21,15 +21,12 @@ RUN usermod -d /home/nobody nobody \
     && chown -R nobody:nobody /home/nobody
 USER nobody
 
-COPY --chown=nobody:nobody package*.json .
+COPY --chown=nobody:nobody package*.json ./
 COPY --chown=nobody:nobody public public
 COPY --from=builder --chown=nobody:nobody /home/nobody/app/dist dist
 
-ENV NODE_ENV=production \
-    PORT=8080
+ENV NODE_ENV=production
 
 RUN npm install-clean
-
-EXPOSE 8080
 
 CMD ["node", "dist/server.js"]
