@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'development') {
 // TODO: might want to add fast failure when env vars not configured properly
 const LOG_CHAT_ID = parseInt(process.env.LOG_CHAT_ID || '');
 const BOT_TOKEN = process.env.BOT_TOKEN || '';
-const PORT = process.env.PORT || 3001;
+const PORT = parseInt(process.env.PORT || '3001');
 
 const app = express();
 
